@@ -26,7 +26,7 @@
         .product-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* Tres productos por fila */
-            gap: 10px;
+            gap: 8px;
             margin-top: 20px;
         }
         .product {
@@ -34,30 +34,30 @@
             flex-direction: column;
             align-items: center;
             background: white;
-            padding: 10px;
-            border-radius: 15px;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 8px; /* Menos padding para reducir el tamaño */
+            border-radius: 10px; /* Cuadros más pequeños */
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15); /* Sombra más pequeña */
             width: 100%;
             transition: transform 0.3s;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .product:hover {
             transform: scale(1.05);
         }
         .product img {
-            width: 70px;
-            height: 70px;
-            border-radius: 10px;
+            width: 60px; /* Tamaño más pequeño de las imágenes */
+            height: 60px;
+            border-radius: 8px; /* Redondear las esquinas de las imágenes */
         }
         .product-btn {
-            margin-top: 8px;
-            padding: 6px 10px;
+            margin-top: 6px;
+            padding: 4px 8px; /* Botones más pequeños */
             background: #00796b;
             color: white;
             border: none;
             cursor: pointer;
-            border-radius: 10px;
-            font-size: 12px;
+            border-radius: 8px;
+            font-size: 10px; /* Fuente más pequeña */
             transition: background 0.3s;
         }
         .product-btn:hover {
@@ -65,12 +65,12 @@
         }
         .result {
             margin-top: 20px;
-            padding: 20px;
+            padding: 15px;
             background: white;
-            border-radius: 15px;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
             display: inline-block;
-            font-size: 16px;
+            font-size: 14px; /* Fuente más pequeña en el resultado */
             width: 100%;
         }
         .result h3 {
@@ -78,13 +78,13 @@
         }
         .undo-btn, .clear-btn {
             margin-top: 20px;
-            padding: 10px 16px;
+            padding: 8px 12px; /* Botones más pequeños */
             background: #d32f2f;
             color: white;
             border: none;
             cursor: pointer;
-            border-radius: 10px;
-            font-size: 14px;
+            border-radius: 8px;
+            font-size: 12px;
             transition: background 0.3s, transform 0.2s;
         }
         .undo-btn:hover, .clear-btn:hover {
@@ -104,41 +104,41 @@
         /* Media queries para pantallas pequeñas */
         @media (max-width: 600px) {
             h2 {
-                font-size: 30px;
+                font-size: 26px;
             }
             p {
                 font-size: 16px;
             }
             .product-container {
-                gap: 10px;
+                gap: 8px;
                 grid-template-columns: repeat(3, 1fr); /* Tres productos por fila */
             }
             .product {
                 width: 100%; /* Asegura que los productos se adapten */
-                padding: 10px;
+                padding: 8px;
             }
             .product img {
-                width: 60px; /* Tamaño más pequeño de las imágenes */
-                height: 60px;
+                width: 50px; /* Tamaño más pequeño de las imágenes */
+                height: 50px;
             }
             .product-btn {
-                font-size: 12px;
-                padding: 6px 10px;
+                font-size: 10px;
+                padding: 4px 8px;
             }
             .result {
                 font-size: 14px;
                 width: auto;
-                padding: 15px;
+                padding: 12px;
             }
             .undo-btn, .clear-btn {
-                padding: 8px 12px;
+                padding: 6px 10px;
                 font-size: 12px;
             }
         }
 
         @media (max-width: 375px) {
             h2 {
-                font-size: 24px;
+                font-size: 22px;
             }
             .product-container {
                 gap: 5px;
@@ -148,8 +148,8 @@
                 width: 100%;
             }
             .product img {
-                width: 50px; /* Tamaño más pequeño de las imágenes */
-                height: 50px;
+                width: 40px; /* Tamaño aún más pequeño de las imágenes */
+                height: 40px;
             }
         }
     </style>
