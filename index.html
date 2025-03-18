@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego CO₂ y Árboles</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+            position: relative;
+            margin: 0;
+        }
+        h2 {
+            color: #00796b;
+            font-size: 28px;
+        }
+        p {
+            color: #004d40;
+            font-size: 18px;
+        }
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Tres productos por fila */
+            gap: 8px;
+            margin-top: 20px;
+        }
+        .product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: white;
+            padding: 8px; /* Menos padding para reducir el tamaño */
+            border-radius: 10px; /* Cuadros más pequeños */
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15); /* Sombra más pequeña */
+            width: 100%;
+            transition: transform 0.3s;
+            margin-bottom: 12px;
+        }
+        .product:hover {
+            transform: scale(1.05);
+        }
+        .product img {
+            width: 60px; /* Tamaño más pequeño de las imágenes */
+            height: 60px;
+            border-radius: 8px; /* Redondear las esquinas de las imágenes */
+        }
+        .product-btn {
+            margin-top: 6px;
+            padding: 4px 8px; /* Botones más pequeños */
+            background: #00796b;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 10px; /* Fuente más pequeña */
+            transition: background 0.3s;
+        }
+        .product-btn:hover {
+            background: #004d40;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+            display: inline-block;
+            font-size: 14px; /* Fuente más pequeña en el resultado */
+            width: 100%;
+        }
+        .result h3 {
+            color: #00796b;
+        }
+        .undo-btn, .clear-btn {
+            margin-top: 20px;
+            padding: 8px 12px; /* Botones más pequeños */
+            background: #d32f2f;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 12px;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .undo-btn:hover, .clear-btn:hover {
+            background: #b71c1c;
+            transform: scale(1.05);
+        }
+
+        /* Logotipo en la parte superior derecha */
+        .logo {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 200px; /* Ajusta el tamaño según sea necesario */
+            height: auto;
+        }
+
+        /* Media queries para pantallas pequeñas */
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 26px;
+            }
+            p {
+                font-size: 16px;
+            }
+            .product-container {
+                gap: 8px;
+                grid-template-columns: repeat(3, 1fr); /* Tres productos por fila */
+            }
+            .product {
+                width: 100%; /* Asegura que los productos se adapten */
+                padding: 8px;
+            }
+            .product img {
+                width: 50px; /* Tamaño más pequeño de las imágenes */
+                height: 50px;
+            }
+            .product-btn {
+                font-size: 10px;
+                padding: 4px 8px;
+            }
+            .result {
+                font-size: 14px;
+                width: auto;
+                padding: 12px;
+            }
+            .undo-btn, .clear-btn {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 375px) {
+            h2 {
+                font-size: 22px;
+            }
+            .product-container {
+                gap: 5px;
+                grid-template-columns: repeat(2, 1fr); /* Dos productos por fila en pantallas muy pequeñas */
+            }
+            .product {
+                width: 100%;
+            }
+            .product img {
+                width: 40px; /* Tamaño aún más pequeño de las imágenes */
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Logotipo en la parte superior derecha -->
+    <img src="logo.png" alt="Logotipo" class="logo">
+
+    <h2>Calcula tu impacto de CO₂</h2>
+    <p>Selecciona productos y descubre cuántos árboles necesitas plantar.</p>
+    
+    <!-- Botón para eliminar todos los productos -->
+    <button class="clear-btn" onclick="clearAllProducts()">Eliminar todo</button>
+
+    <div class="product-container" id="products"></div>
+    <div class="result">
+        <h3>Emisiones totales: <span id="totalCO2">0</span> kg CO₂</h3>
+        <h3>Árboles necesarios: <span id="treesNeeded">0</span></h3>
+    </div>
+    <button class="undo-btn" onclick="undoLastProduct()">Retroceder</button>
+
+    <script>
+        const products = [
+            { name: "Carne de res (1kg) - Argentina", co2: 27, img: "https://cdnx.jumpseller.com/la-familia-avilena-envios/image/37105243/resize/140/140?1688356674" },
+            { name: "Leche (1L) - España", co2: 3.2, img: "https://www.trainerclub.es/wp-content/uploads/12.jpg.webp" },
+            { name: "Arroz (1kg) - India", co2: 4.5, img: "https://www.gastronomiavasca.net/uploads/image/file/3900/w700_arroz_basmati.jpg" },
+            { name: "Pan (500g) - Francia", co2: 0.75, img: "https://abmauri.es/wp-content/uploads/2020/08/articulo-1-imagen.jpg" },
+            { name: "Patatas (1kg) - Holanda", co2: 0.5, img: "https://agraliajardin.com/wp-content/uploads/2022/02/imagen-portada-patatas-1.jpg" }
+        ];
+        
+        const treeAbsorption = 22;
+        let totalCO2 = 0;
+        let addedProducts = [];
+
+        function updateResults() {
+            document.getElementById("totalCO2").innerText = totalCO2.toFixed(2);
+            document.getElementById("treesNeeded").innerText = Math.ceil(totalCO2 / treeAbsorption);
+        }
+
+        function addProduct(co2) {
+            addedProducts.push(co2);
+            totalCO2 += co2;
+            updateResults();
+        }
+
+        function undoLastProduct() {
+            if (addedProducts.length > 0) {
+                totalCO2 -= addedProducts.pop();
+                if (totalCO2 < 0) totalCO2 = 0;
+                updateResults();
+            }
+        }
+
+        function clearAllProducts() {
+            addedProducts = [];
+            totalCO2 = 0;
+            updateResults();
+        }
+
+        const productContainer = document.getElementById("products");
+        products.forEach(product => {
+            const div = document.createElement("div");
+            div.className = "product";
+            div.innerHTML = ` 
+                <img src="${product.img}" alt="${product.name}">
+                <p>${product.name} (${product.co2} kg CO₂)</p>
+                <button class="product-btn" onclick="addProduct(${product.co2})">Agregar</button>
+            `;
+            productContainer.appendChild(div);
+        });
+    </script>
+</body>
+</html>
