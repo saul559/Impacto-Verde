@@ -10,23 +10,24 @@
         body {
             font-family: 'Poppins', sans-serif;
             text-align: center;
-            padding: 50px;
+            padding: 30px;
             background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
             position: relative;
+            margin: 0;
         }
         h2 {
             color: #00796b;
-            font-size: 74px;
+            font-size: 28px;
         }
         p {
             color: #004d40;
-            font-size: 28px;
+            font-size: 18px;
         }
         .product-container {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 15px;
             margin-top: 20px;
         }
         .product {
@@ -37,26 +38,27 @@
             padding: 15px;
             border-radius: 15px;
             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-            width: 180px;
+            width: 120px;
             transition: transform 0.3s;
+            margin-bottom: 20px;
         }
         .product:hover {
             transform: scale(1.05);
         }
         .product img {
-            width: 120px;
-            height: 120px;
+            width: 90px;
+            height: 90px;
             border-radius: 10px;
         }
         .product-btn {
             margin-top: 10px;
-            padding: 10px 15px;
+            padding: 8px 12px;
             background: #00796b;
             color: white;
             border: none;
             cursor: pointer;
             border-radius: 10px;
-            font-size: 14px;
+            font-size: 12px;
             transition: background 0.3s;
         }
         .product-btn:hover {
@@ -69,41 +71,25 @@
             border-radius: 15px;
             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
             display: inline-block;
-            font-size: 18px;
+            font-size: 16px;
+            width: 100%;
         }
         .result h3 {
             color: #00796b;
         }
-        .undo-btn {
+        .undo-btn, .clear-btn {
             margin-top: 20px;
-            padding: 12px 18px;
+            padding: 10px 16px;
             background: #d32f2f;
             color: white;
             border: none;
             cursor: pointer;
             border-radius: 10px;
-            font-size: 16px;
+            font-size: 14px;
             transition: background 0.3s, transform 0.2s;
         }
-        .undo-btn:hover {
+        .undo-btn:hover, .clear-btn:hover {
             background: #b71c1c;
-            transform: scale(1.05);
-        }
-
-        /* Eliminar todos los productos */
-        .clear-btn {
-            margin-top: 20px;
-            padding: 12px 18px;
-            background: #1976d2;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 10px;
-            font-size: 16px;
-            transition: background 0.3s, transform 0.2s;
-        }
-        .clear-btn:hover {
-            background: #1565c0;
             transform: scale(1.05);
         }
 
@@ -111,9 +97,58 @@
         .logo {
             position: absolute;
             top: 5px;
-            right: 80px;
-            width: 300px; /* Ajusta el tamaño según sea necesario */
+            right: 5px;
+            width: 200px; /* Ajusta el tamaño según sea necesario */
             height: auto;
+        }
+
+        /* Media queries para pantallas pequeñas */
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 30px;
+            }
+            p {
+                font-size: 16px;
+            }
+            .product-container {
+                gap: 10px;
+            }
+            .product {
+                width: 130px;
+            }
+            .product img {
+                width: 80px;
+                height: 80px;
+            }
+            .product-btn {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+            .result {
+                font-size: 14px;
+                width: auto;
+                padding: 15px;
+            }
+            .undo-btn, .clear-btn {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 375px) {
+            h2 {
+                font-size: 24px;
+            }
+            .product-container {
+                gap: 5px;
+            }
+            .product {
+                width: 100px;
+            }
+            .product img {
+                width: 70px;
+                height: 70px;
+            }
         }
     </style>
 </head>
@@ -138,9 +173,8 @@
         const products = [
             { name: "Carne de res (1kg) - Argentina", co2: 27, img: "https://cdnx.jumpseller.com/la-familia-avilena-envios/image/37105243/resize/140/140?1688356674" },
             { name: "Leche (1L) - España", co2: 3.2, img: "https://www.trainerclub.es/wp-content/uploads/12.jpg.webp" },
-	    { name: "Arroz (1kg) - India", co2: 4.5, img: "https://www.gastronomiavasca.net/uploads/image/file/3900/w700_arroz_basmati.jpg" },
-            { name: "Pan (500g) - Francia", co2: 0.75, img: "https://abmauri.es/wp-content/uploads/2020/08/articulo-1-imagen.jpg" },
             { name: "Arroz (1kg) - India", co2: 4.5, img: "https://www.gastronomiavasca.net/uploads/image/file/3900/w700_arroz_basmati.jpg" },
+            { name: "Pan (500g) - Francia", co2: 0.75, img: "https://abmauri.es/wp-content/uploads/2020/08/articulo-1-imagen.jpg" },
             { name: "Patatas (1kg) - Holanda", co2: 0.5, img: "https://agraliajardin.com/wp-content/uploads/2022/02/imagen-portada-patatas-1.jpg" }
         ];
         
@@ -167,7 +201,6 @@
             }
         }
 
-        // Función para eliminar todos los productos de la cesta
         function clearAllProducts() {
             addedProducts = [];
             totalCO2 = 0;
@@ -178,7 +211,7 @@
         products.forEach(product => {
             const div = document.createElement("div");
             div.className = "product";
-            div.innerHTML = `
+            div.innerHTML = ` 
                 <img src="${product.img}" alt="${product.name}">
                 <p>${product.name} (${product.co2} kg CO₂)</p>
                 <button class="product-btn" onclick="addProduct(${product.co2})">Agregar</button>
