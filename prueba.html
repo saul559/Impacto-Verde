@@ -17,11 +17,11 @@
         }
         h2 {
             color: #00796b;
-            font-size: 28px;
+            font-size: 58px;
         }
         p {
             color: #004d40;
-            font-size: 18px;
+            font-size: 28px;
         }
         .product-container {
             display: grid;
@@ -147,8 +147,7 @@
     </style>
 </head>
 <body>
-    <!-- Logotipo en la parte superior derecha -->
-    <img src="logo.png" alt="Logotipo" class="logo">
+   
 
     <h2>Calcula tu impacto de CO₂</h2>
     <p>Selecciona productos y descubre cuántos árboles necesitas plantar.</p>
@@ -210,9 +209,9 @@
             div.className = "product";
             div.innerHTML = ` 
                 <img src="${product.img}" alt="${product.name}" onclick="addProduct(${product.co2})">
-                <p>${product.name} (${product.co2} kg CO₂) 
-		<img src="${product.flag}" alt="Bandera" style="width: 25px; height: 16px; margin-left: 10px; margin-top: 5px;"></p>
+                <p><img src="${product.flag}" alt="Bandera" style="width: 25px; height: 16px;  margin-top: 1px;"></p>
             `;
+		//${product.name} (${product.co2} kg CO₂)
             productContainer.appendChild(div);
         });
     </script>
