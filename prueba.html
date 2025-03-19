@@ -26,7 +26,7 @@
         .product-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* Cuatro productos por fila */
-            gap: 65px; /* Ajuste el espacio entre productos */
+           /* gap: 65px;  Ajuste el espacio entre productos */
             margin-top: 20px;
         }
         .product {
@@ -100,7 +100,7 @@
                 font-size: 16px;
             }
             .product-container {
-                gap: 35px;
+                /*gap: 35px;*/
                 grid-template-columns: repeat(3, 1fr); /* Cuatro productos por fila */
             }
             .product {
@@ -132,7 +132,7 @@
                 font-size: 22px;
             }
             .product-container {
-                gap: 35px;
+                /*gap: 35px;*/
                 grid-template-columns: repeat(3, 1fr); /* Cuatro productos por fila en pantallas muy pequeñas */
             }
             .product {
@@ -209,7 +209,7 @@
             div.className = "product";
             div.innerHTML = ` 
                 <img src="${product.img}" alt="${product.name}" onclick="addProduct(${product.co2})">
-                <p><img src="${product.flag}" alt="Bandera" style="width: 25px; height: 16px;  margin-top: 1px;"></p>
+                <img src="${product.flag}" alt="Bandera" style="width: 25px; height: 16px;  margin-top: 5px;">
             `;
 		//${product.name} (${product.co2} kg CO₂)
             productContainer.appendChild(div);
