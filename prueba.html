@@ -64,14 +64,17 @@
             color: #00796b;
         }
         .undo-btn, .clear-btn {
-            margin-top: 20px;
+            margin-left: 5px;
+	    margin-top: 20px;
+	    height: 50px;
+  	    width: 110px;
             padding: 8px 12px; /* Botones más pequeños */
             background: #d32f2f;
             color: white;
             border: none;
             cursor: pointer;
             border-radius: 8px;
-            font-size: 12px;
+            font-size: 18px;
             transition: background 0.3s, transform 0.2s;
         }
         .undo-btn:hover, .clear-btn:hover {
@@ -115,8 +118,12 @@
                 padding: 12px;
             }
             .undo-btn, .clear-btn {
-                padding: 6px 10px;
-                font-size: 12px;
+		margin-left: 5px;
+	    	margin-top: 20px;
+	   	height: 50px;
+  	    	width: 110px;
+		padding: 6px 10px;
+                font-size: 18px;
             }
         }
 
@@ -146,14 +153,17 @@
     <h2>Calcula tu impacto de CO₂</h2>
     <p>Selecciona productos y descubre cuántos árboles necesitas plantar.</p>
     
-    <!-- Botón para eliminar todos los productos -->
-    <button class="clear-btn" onclick="clearAllProducts()">Eliminar todo</button>
 
     <div class="product-container" id="products"></div>
     <div class="result">
         <h3>Emisiones totales: <span id="totalCO2">0</span> kg CO₂</h3>
         <h3>Árboles necesarios: <span id="treesNeeded">0</span></h3>
     </div>
+
+
+    <!-- Botón para eliminar todos los productos -->
+    <button class="clear-btn" onclick="clearAllProducts()">Eliminar </button>
+
     <button class="undo-btn" onclick="undoLastProduct()">Retroceder</button>
 
     <script>
