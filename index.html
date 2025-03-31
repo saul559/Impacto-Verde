@@ -173,11 +173,17 @@
 
     <script>
         const products = [
-            { name: "", co2: 27, img: "https://cdnx.jumpseller.com/la-familia-avilena-envios/image/37105243/resize/140/140?1688356674", flag: "https://flagcdn.com/w40/ar.png" },
-            { name: "", co2: 3.2, img: "https://www.trainerclub.es/wp-content/uploads/12.jpg.webp", flag: "https://flagcdn.com/w40/es.png" },
-            { name: "", co2: 4.5, img: "https://www.gastronomiavasca.net/uploads/image/file/3900/w700_arroz_basmati.jpg", flag: "https://flagcdn.com/w40/in.png" },
-            { name: "", co2: 0.75, img: "https://abmauri.es/wp-content/uploads/2020/08/articulo-1-imagen.jpg", flag: "https://flagcdn.com/w40/fr.png" },
-            { name: "", co2: 0.5, img: "https://agraliajardin.com/wp-content/uploads/2022/02/imagen-portada-patatas-1.jpg", flag: "https://flagcdn.com/w40/nl.png" }
+            { name: "", co2: 293.97, img: "https://www.calfruitos.com/es/fotos/pr_33_20191024155200.png", flag: "https://flagcdn.com/w40/it.png" },
+            { name: "", co2: 108.00, img: "https://www.calfruitos.com/es/fotos/pr_8640_20230421130104.png", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Flag_of_La_Rioja_%28with_coat_of_arms%29.svg/255px-Flag_of_La_Rioja_%28with_coat_of_arms%29.svg.png" },
+            { name: "", co2: 30.00, img: "https://www.calfruitos.com/es/fotos/pr_188_20170920161446.png", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Flag_Almer%C3%ADa_Province.svg/255px-Flag_Almer%C3%ADa_Province.svg.png" },
+            { name: "", co2: 14.76, img: "https://www.calfruitos.com/es/fotos/pr_136_20170908093151.png", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Bandera_de_Sanl%C3%BAcar_de_Barrameda.svg/800px-Bandera_de_Sanl%C3%BAcar_de_Barrameda.svg.png" },
+            { name: "", co2: 21.60, img: "https://www.calfruitos.com/es/fotos/pr_3674_20240411123452.png", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Bandera_de_Granada_%28Granada%29.svg/1920px-Bandera_de_Granada_%28Granada%29.svg.png" },
+	    { name: "", co2: 6.00, img: "https://www.calfruitos.com/es/fotos/pr_160_20170919152613.png", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Bandera_de_Granada_%28Granada%29.svg/1920px-Bandera_de_Granada_%28Granada%29.svg.png" },
+	    { name: "", co2: 5.40, img: "https://imagenes.20minutos.es/files/image_990_556/uploads/imagenes/2022/07/22/huevos.jpeg", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Conil_de_la_frontera_bandera.png/960px-Conil_de_la_frontera_bandera.png" },
+	    { name: "", co2: 1110.00, img: "https://www.millerchemical.com/es/wp-content/uploads/sites/2/2021/03/iStock-466713542.png", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/BANDERA_MANILVA.jpg/960px-BANDERA_MANILVA.jpg" },
+	    { name: "", co2: 293.97, img: "http://www.congesur.com/1831-large_default/pijotas-enteras-kg.jpg", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/800px-Flag_of_the_United_States.svg.png" },
+	    { name: "", co2: 13.44, img: "https://www.ibericosvallehermoso.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/0/9/09-tira-de-costillas.png", flag: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Flag_of_M%C3%A1laga%2C_Spain.svg" },
+	    { name: "", co2: 24.00, img: "https://etxazzk9v42.exactdn.com/wp-content/uploads/2022/04/POLLO.png?strip=all&lossy=1&ssl=1&fit=500%2C500", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Bandera_de_la_provincia_de_Sevilla_cuadrada.svg/500px-Bandera_de_la_provincia_de_Sevilla_cuadrada.svg.png" }
         ];
         
         const treeAbsorption = 22;
@@ -197,7 +203,7 @@
 	    //nuevo
 	    if (foodCount >= maxFoodCount) {
         	alert("¡Has alcanzado el límite de 10 alimentos!");
-        	return;
+		return;
     	    }
 	    //nuevo
             addedProducts.push(co2);
