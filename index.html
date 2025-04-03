@@ -157,8 +157,9 @@
 
 
     <div class="result">
-    	<h3>Emisiones totales: <span id="totalCO2">0</span> kg CO₂</h3>
+    	<h3>Emisiones mensuales: <span id="totalCO2">0</span> kg CO₂</h3>
 	<h3 hidden>Árboles necesarios: <span id="treesNeeded">0</span></h3>
+        <!-- Apartado de Emisiones por Año --> <h3>Emisiones anuales: <span id="annualCO2">0</span> kg CO₂</h3>
     	<h3>Alimentos seleccionados: <span id="foodCount">0</span>/20</h3>
     </div>
 
@@ -172,18 +173,7 @@
 
     <script>
         const products = [
-            { name: "", co2: 0.29397, img: "https://www.calfruitos.com/es/fotos/pr_33_20191024155200.png", flag: "https://flagcdn.com/w40/it.png" },
-            { name: "", co2: 0.108, img: "https://www.calfruitos.com/es/fotos/pr_8640_20230421130104.png", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Flag_of_La_Rioja_%28with_coat_of_arms%29.svg/255px-Flag_of_La_Rioja_%28with_coat_of_arms%29.svg.png" },
-            { name: "", co2: 0.03, img: "https://www.calfruitos.com/es/fotos/pr_188_20170920161446.png", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Flag_Almer%C3%ADa_Province.svg/255px-Flag_Almer%C3%ADa_Province.svg.png" },
-            { name: "", co2: 0.01476, img: "https://www.calfruitos.com/es/fotos/pr_136_20170908093151.png", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Bandera_de_Sanl%C3%BAcar_de_Barrameda.svg/800px-Bandera_de_Sanl%C3%BAcar_de_Barrameda.svg.png" },
-            { name: "", co2: 0.02160, img: "https://www.calfruitos.com/es/fotos/pr_3674_20240411123452.png", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Bandera_de_Granada_%28Granada%29.svg/1920px-Bandera_de_Granada_%28Granada%29.svg.png" },
-	    { name: "", co2: 0.02160, img:"https://www.calfruitos.com/es/fotos/pr_160_20170919152613.png", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Bandera_de_Granada_%28Granada%29.svg/1920px-Bandera_de_Granada_%28Granada%29.svg.png" },
-	    { name: "", co2: 0.006, img: "https://imagenes.20minutos.es/files/image_990_556/uploads/imagenes/2022/07/22/huevos.jpeg", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Conil_de_la_frontera_bandera.png/960px-Conil_de_la_frontera_bandera.png" },
-	    { name: "", co2: 0.0054, img: "https://www.millerchemical.com/es/wp-content/uploads/sites/2/2021/03/iStock-466713542.png", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/BANDERA_MANILVA.jpg/960px-BANDERA_MANILVA.jpg" },
-	    { name: "", co2: 1.11, img: "https://lasrecetasdelola.com/wp-content/uploads/2015/07/sam_1999.jpg", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/800px-Flag_of_the_United_States.svg.png" },
-	    { name: "", co2: 0.29397, img: "https://www.operacionbikini.es/wp-content/uploads/2013/10/boquerones.jpeg", flag: "https://www.banderas-e-himnos.com/media/39/bandera-italia.png" },
-	    { name: "", co2: 0.01344, img: "https://www.ibericosvallehermoso.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/0/9/09-tira-de-costillas.png", flag: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Flag_of_M%C3%A1laga%2C_Spain.svg" },
-	    { name: "", co2: 0.024, img: "https://etxazzk9v42.exactdn.com/wp-content/uploads/2022/04/POLLO.png?strip=all&lossy=1&ssl=1&fit=500%2C500", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Bandera_de_la_provincia_de_Sevilla_cuadrada.svg/500px-Bandera_de_la_provincia_de_Sevilla_cuadrada.svg.png" }
+            { name: "", co2: 1.17564, img: "https://www.calfruitos.com/es/fotos/pr_33_20191024155200.png", flag: "https://flagcdn.com/w40/it.png" }, { name: "", co2: 0.432, img: "https://www.calfruitos.com/es/fotos/pr_8640_20230421130104.png", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Flag_of_La_Rioja_%28with_coat_of_arms%29.svg/255px-Flag_of_La_Rioja_%28with_coat_of_arms%29.svg.png" }, { name: "", co2: 0.12, img: "https://www.calfruitos.com/es/fotos/pr_188_20170920161446.png", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Flag_Almer%C3%ADa_Province.svg/255px-Flag_Almer%C3%ADa_Province.svg.png" }, { name: "", co2: 0.05904, img: "https://www.calfruitos.com/es/fotos/pr_136_20170908093151.png", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Bandera_de_Sanl%C3%BAcar_de_Barrameda.svg/800px-Bandera_de_Sanl%C3%BAcar_de_Barrameda.svg.png" }, { name: "", co2: 0.0864, img: "https://www.calfruitos.com/es/fotos/pr_3674_20240411123452.png", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Bandera_de_Granada_%28Granada%29.svg/1920px-Bandera_de_Granada_%28Granada%29.svg.png" }, { name: "", co2: 0.0864, img:"https://www.calfruitos.com/es/fotos/pr_160_20170919152613.png", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Bandera_de_Granada_%28Granada%29.svg/1920px-Bandera_de_Granada_%28Granada%29.svg.png" }, { name: "", co2: 0.024, img: "https://imagenes.20minutos.es/files/image_990_556/uploads/imagenes/2022/07/22/huevos.jpeg", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Conil_de_la_frontera_bandera.png/960px-Conil_de_la_frontera_bandera.png" }, { name: "", co2: 0.0216, img: "https://www.millerchemical.com/es/wp-content/uploads/sites/2/2021/03/iStock-466713542.png", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/BANDERA_MANILVA.jpg/960px-BANDERA_MANILVA.jpg" }, { name: "", co2: 4.44, img: "https://lasrecetasdelola.com/wp-content/uploads/2015/07/sam_1999.jpg", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/800px-Flag_of_the_United_States.svg.png" }, { name: "", co2: 1.17564, img: "https://www.operacionbikini.es/wp-content/uploads/2013/10/boquerones.jpeg", flag: "https://www.banderas-e-himnos.com/media/39/bandera-italia.png" }, { name: "", co2: 0.05376, img: "https://www.ibericosvallehermoso.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/0/9/09-tira-de-costillas.png", flag: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Flag_of_M%C3%A1laga%2C_Spain.svg" }, { name: "", co2: 0.096, img: "https://etxazzk9v42.exactdn.com/wp-content/uploads/2022/04/POLLO.png?strip=all&lossy=1&ssl=1&fit=500%2C500", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Bandera_de_la_provincia_de_Sevilla_cuadrada.svg/500px-Bandera_de_la_provincia_de_Sevilla_cuadrada.svg.png" }
         ];
         
         const treeAbsorption = 22;
@@ -196,6 +186,7 @@
             document.getElementById("totalCO2").innerText = totalCO2.toFixed(2);
             document.getElementById("treesNeeded").innerText = totalCO2 > 0 ? Math.floor(totalCO2 / treeAbsorption) : 0;
 	    document.getElementById("foodCount").innerText = `${foodCount}`; //nuevo
+	    document.getElementById("annualCO2").innerText = (totalCO2 * 12).toFixed(2);  // Emisiones anuales}	
         }
 
         function addProduct(co2) {
@@ -221,8 +212,9 @@
         }
 
 	 function askTreeQuestion() {
+	    //mensuales
             let correctTrees = Math.floor(totalCO2 / treeAbsorption);
-            let userAnswer = prompt("¿Cuántos árboles son necesarios para contrarrestar el CO₂ generado?");
+            let userAnswer = prompt("¿Cuántos árboles son necesarios para contrarrestar el CO₂ generado mensualmente?");
 
             if (userAnswer !== null) {
                 userAnswer = parseInt(userAnswer.trim());
@@ -237,7 +229,24 @@
                     alert("❌ Por favor, ingresa un número válido.");
                 }
             }
+	    //anuales
+	    let correctTrees1 = Math.floor((totalCO2 * 12) / treeAbsorption);
+            let userAnswer1 = prompt("¿Y cuántos árboles son necesarios para contrarrestar el CO₂ generado anualmente?");
 
+            if (userAnswer1 !== null) {
+                userAnswer1 = parseInt(userAnswer1.trim());
+
+                if (!isNaN(userAnswer1)) {
+                    if (userAnswer1 === correctTrees1) {
+                        alert("🎉 ¡Enhorabuena! Has acertado.");
+                    } else {
+                        alert(`❌ Respuesta incorrecta. La respuesta correcta es: ${correctTrees1} árboles.`);
+                    }
+                } else {
+                    alert("❌ Por favor, ingresa un número válido.");
+                }
+            }
+	    
             clearAllProducts();
         }
 
